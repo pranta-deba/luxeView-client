@@ -5,3 +5,8 @@
 .active {
     color: #E94560;
 }
+.gradient-text {
+    background: linear-gradient(to right, #d7d7d7, #E94560);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
