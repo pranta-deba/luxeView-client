@@ -11,8 +11,9 @@ body {
 .active {
     color: #E94560;
 }
+
 .gradient-text {
     background: linear-gradient(to right, #0F3460, #E94560);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
+}

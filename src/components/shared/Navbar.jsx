@@ -4,13 +4,15 @@ import { Link, NavLink } from 'react-router-dom';
 import ProfileDropdown from '../common/ProfileDropdown';
 import { TfiMenu } from "react-icons/tfi";
 import { GrClose } from "react-icons/gr";
+// import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // const { user } = useAuth();
+
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
     return (
         <nav className="text-white shadow-md">
             <div className="container mx-auto flex items-center justify-between p-4">

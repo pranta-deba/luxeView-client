@@ -1,9 +1,11 @@
 import Banner from "../../components/common/Banner";
+import FeaturedProducts from "../../components/common/FeaturedProducts";
 
 const Home = () => {
     return (
         <div>
-           <Banner/>
+            <Banner />
+            <FeaturedProducts />
         </div>
     );
 };
