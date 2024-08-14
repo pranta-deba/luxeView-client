@@ -25,28 +25,38 @@ const FeaturedProducts = () => {
                             slidesPerView: 3,
                         },
                         1025: {
-                            slidesPerView: 6,
+                            slidesPerView: 4,
                         },
                     }}
                     className="my-10"
                 >
                     {latestProducts.map((product, index) => (
                         <SwiperSlide key={index}>
-                            <div className="p-4 bg-[#1A1A2E] text-white rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+                            <div className="relative p-4 bg-[#1A1A2E] text-white rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl hover:bg-[#0F3460] group">
                                 <img
                                     src={product?.productImage}
                                     alt={product?.productName}
-                                    className="w-full h-48 object-cover rounded-t-lg"
+                                    className="w-full h-60 object-cover rounded-t-lg"
                                 />
                                 <div className="p-4 text-center">
-                                    <h3 className="text-lg font-bold text-[#E94560]">{product?.productName.split(' ')[0]}...</h3>
+                                    <h3 className="text-lg font-bold text-[#E94560]">
+                                        {product?.productName.split(' ')[0]}...
+                                    </h3>
                                     <div className="mt-2 flex justify-center items-center">
                                         <span className="text-[#E94560] font-semibold">Rating:</span>
                                         <span className="ml-2">{product?.ratings} ⭐</span>
                                     </div>
                                 </div>
+                                <div className="absolute inset-0 flex items-center justify-center bg-opacity-0 hover:bg-opacity-75 hover:bg-black transition-all duration-300 rounded-lg">
+                                    <button
+                                        className="opacity-0 group-hover:opacity-100 bg-[#E94560] text-white font-bold py-2 px-4 rounded-full transition-opacity duration-300"
+                                    >
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </SwiperSlide>
+
                     ))}
                 </Swiper> :
                     <>
