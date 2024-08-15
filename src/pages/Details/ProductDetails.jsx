@@ -4,9 +4,11 @@ import AOS from 'aos';
 import { useEffect } from "react";
 import Loader from "../../components/others/Loader";
 import { Helmet } from "react-helmet-async";
+import useCart from "../../hooks/useCart";
 
 const ProductDetails = () => {
     const product = useLoaderData();
+    const { addToCart } = useCart();
     const {
         brand,
         category,
@@ -65,7 +67,7 @@ const ProductDetails = () => {
                                 </div>
                             </div>
                             <div className="mt-4 flex items-center space-x-4">
-                                <button className="bg-[#1A1A2E] text-white px-6 py-2 rounded-md hover:bg-[#0F3460] transition duration-300">
+                                <button onClick={() => addToCart(product)} className="bg-[#1A1A2E] text-white px-6 py-2 rounded-md hover:bg-[#0F3460] transition duration-300">
                                     <FaShoppingCart className="inline-block mr-2" />
                                     Add to Cart
                                 </button>

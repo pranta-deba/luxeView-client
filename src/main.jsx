@@ -14,18 +14,21 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import AuthProvider from './providers/auth/AuthProvider.jsx'
 import { HelmetProvider } from 'react-helmet-async';
+import CartProvider from './providers/cart/CartProvider.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-        <Toaster
-          position="top-left"
-          reverseOrder={false}
-        />
-      </HelmetProvider>
+      <CartProvider>
+        <HelmetProvider>
+          <RouterProvider router={router} />
+          <Toaster
+            position="top-left"
+            reverseOrder={false}
+          />
+        </HelmetProvider>
+      </CartProvider>
     </AuthProvider>
   </StrictMode>,
 )

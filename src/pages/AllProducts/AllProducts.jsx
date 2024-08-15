@@ -3,6 +3,7 @@ import { FaSearch, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import AOS from 'aos';
 import { Helmet } from 'react-helmet-async';
 import axiosPublic from '../../api/axiosPublic';
+import { Link } from 'react-router-dom';
 
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
@@ -179,7 +180,7 @@ const AllProducts = () => {
                             <p className="text-gray-600 mb-2">Category: {product.category}</p>
                             <p className="text-[#E94560] font-bold mb-4">${product.price.toFixed(2)}</p>
                             <p className="text-gray-600 mb-2">Ratings: {product.ratings}</p>
-                            <a href={`/details/${product._id}`} className="text-[#E94560] hover:underline">See Details</a>
+                            <Link to={`/details/${product._id}`} className="text-[#E94560] hover:underline">See Details</Link>
                         </div>
                     ))}
                 </div>
