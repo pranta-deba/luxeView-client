@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import useGetLatest from '../../hooks/useGetLatest';
 import Skeleton from '../others/Skeleton';
+import { Link } from 'react-router-dom';
 
 const FeaturedProducts = () => {
     const [latestProducts, loader] = useGetLatest();
@@ -48,11 +49,12 @@ const FeaturedProducts = () => {
                                     </div>
                                 </div>
                                 <div className="absolute inset-0 flex items-center justify-center bg-opacity-0 hover:bg-opacity-75 hover:bg-black transition-all duration-300 rounded-lg">
-                                    <button
+                                    <Link
+                                        to={`/details/${product._id}`}
                                         className="opacity-0 group-hover:opacity-100 bg-[#E94560] text-white font-bold py-2 px-4 rounded-full transition-opacity duration-300"
                                     >
                                         View Details
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </SwiperSlide>

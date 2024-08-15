@@ -19,7 +19,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="text-2xl font-bold">
                     <Link to="/" className="flex items-center">
-                        <img src="./logo.png" alt="Logo" className='w-20 md:w-28' />
+                        <img src="/logo.png" alt="Logo" className='w-20 md:w-28' />
                     </Link>
                 </div>
 
@@ -47,12 +47,12 @@ const Navbar = () => {
                         <Link to="/register" className="bg-[#0F3460] hover:bg-[#0C2B4E] text-white py-2 px-4 rounded flex items-center">
                             <FaUserPlus className="mr-2" /> Register
                         </Link></>}
-                    {user && <ProfileDropdown user={user} logOut={logOut}/>}
+                    {user && <ProfileDropdown user={user} logOut={logOut} />}
                 </div>
 
                 {/* Mobile Menu Toggle */}
                 <div className="md:hidden flex gap-3 items-center justify-center">
-                    {user && <ProfileDropdown user={user} logOut={logOut}/>}
+                    {user && <ProfileDropdown user={user} logOut={logOut} />}
                     <button onClick={toggleMenu} className="text-[#0F3460]">
                         {!isMenuOpen ? <TfiMenu size={30} /> :
                             <GrClose size={30} />}

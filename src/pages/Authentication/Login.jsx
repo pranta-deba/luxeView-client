@@ -42,7 +42,7 @@ const Login = () => {
     const handleGoogleLogin = async () => {
         try {
             await googleLogin();
-            navigation(go);
+            navigate(go);
         } catch (error) {
             console.log(error.message);
         }
