@@ -5,6 +5,7 @@ import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import ProductDetails from "../pages/Details/ProductDetails";
 import Private from "./Private";
+import AllProducts from "../pages/AllProducts/AllProducts";
 
 export const router = createBrowserRouter([
     {
@@ -13,6 +14,7 @@ export const router = createBrowserRouter([
         errorElement: <div>Error</div>,
         children: [
             { path: "/", element: <Home /> },
+            { path: "/products", element: <Private><AllProducts /></Private> },
             {
                 path: "/details/:id",
                 element: <Private><ProductDetails /></Private>,
