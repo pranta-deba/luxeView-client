@@ -10,11 +10,13 @@ const Root = () => {
         return <Loader />
     }
     return (
-        <div>
+        <>
             <Navbar />
-            <Outlet />
+            <main className="min-h-[calc(100vh-261.688px)]">
+                <Outlet />
+            </main>
             <Footer />
-        </div>
+        </>
     );
 };
 

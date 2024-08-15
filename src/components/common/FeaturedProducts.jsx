@@ -8,10 +8,10 @@ const FeaturedProducts = () => {
     const [latestProducts, loader] = useGetLatest();
 
     return (
-        <div className="w-[90%] mx-auto my-20 items-center">
+        <div className="max-w-[1550px] mx-auto w-[90%] mt-10 items-center">
             <div className="flex flex-wrap justify-between items-center">
                 <h1 className="text-4xl font-bold text-[#1A1A2E]">Featured Products</h1>
-                <button>View all products</button>
+                <Link to={"/products"} className="hover:text-[#E94560] hover:underline">View all products</Link>
             </div>
             <div>
                 {!loader ? <Swiper
@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
                 >
                     {latestProducts.map((product, index) => (
                         <SwiperSlide key={index}>
-                            <div className="relative p-4 bg-[#1A1A2E] text-white rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl hover:bg-[#0F3460] group">
+                            <div className="relative p-4  rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl group my-4">
                                 <img
                                     src={product?.productImage}
                                     alt={product?.productName}
@@ -43,9 +43,10 @@ const FeaturedProducts = () => {
                                     <h3 className="text-lg font-bold text-[#E94560]">
                                         {product?.productName.split(' ')[0]}...
                                     </h3>
+                                    <p className="text-sm text-gray-300 mt-1">{product?.brand}</p> {/* Brand name added */}
                                     <div className="mt-2 flex justify-center items-center">
                                         <span className="text-[#E94560] font-semibold">Rating:</span>
-                                        <span className="ml-2">{product?.ratings} ⭐</span>
+                                        <span className="ml-2 text-black">{product?.ratings} ⭐</span>
                                     </div>
                                 </div>
                                 <div className="absolute inset-0 flex items-center justify-center bg-opacity-0 hover:bg-opacity-75 hover:bg-black transition-all duration-300 rounded-lg">

@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { ImSpinner11 } from "react-icons/im";
 import toast from "react-hot-toast";
 import axiosPublic from "../../api/axiosPublic";
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -70,6 +71,9 @@ const Register = () => {
                 data-aos-duration="1000"
                 className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg"
             >
+                <Helmet>
+                    <title>LuxeView | Register</title>
+                </Helmet>
                 <div>
                     <h2 className="text-center text-3xl font-extrabold text-[#1A1A2E]">
                         Create an Account
@@ -83,7 +87,7 @@ const Register = () => {
                         <button
                             onClick={handleGoogleLogin}
                             type="button"
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#E94560] hover:bg-[#0F3460] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1A1A2E] transition duration-300"
+                            className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#E94560] hover:bg-[#0F3460] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1A1A2E] transition duration-300"
                         >
                             <FaGoogle className="mr-2" /> Sign in with Google
                         </button>

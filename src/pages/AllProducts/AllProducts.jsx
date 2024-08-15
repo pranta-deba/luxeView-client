@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { FaSearch, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import AOS from 'aos';
+import { Helmet } from 'react-helmet-async';
+import axiosPublic from '../../api/axiosPublic';
 
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
@@ -11,20 +12,36 @@ const AllProducts = () => {
     const [priceRange, setPriceRange] = useState([0, 1000]);
     const [sortOption, setSortOption] = useState('price-asc');
     const [productsPerPage] = useState(10);
+    const [selectedBrand, setSelectedBrand] = useState('');
+    const [brands, setBrands] = useState([]);
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
         fetchProducts();
-    }, [searchTerm, priceRange, sortOption, currentPage]);
+    }, [searchTerm, priceRange, sortOption, currentPage, selectedBrand]);
+
+    useEffect(() => {
+        fetchBrands();
+    }, []);
+
+    const fetchBrands = async () => {
+        try {
+            const response = await axiosPublic.get('/brands');
+            setBrands(response.data);
+        } catch (error) {
+            console.error('Error fetching brands:', error);
+        }
+    };
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/products', {
+            const response = await axiosPublic.get('/products', {
                 params: {
                     search: searchTerm,
                     minPrice: priceRange[0],
                     maxPrice: priceRange[1],
                     sort: sortOption,
+                    brand: selectedBrand,
                     page: currentPage,
                     limit: productsPerPage,
                 },
@@ -51,6 +68,11 @@ const AllProducts = () => {
         setCurrentPage(1);
     };
 
+    const handleBrandFilter = (e) => {
+        setSelectedBrand(e.target.value);
+        setCurrentPage(1);
+    };
+
     const handlePageChange = (direction) => {
         if (direction === 'prev' && currentPage > 1) setCurrentPage(currentPage - 1);
         if (direction === 'next' && currentPage < Math.ceil(totalProducts / productsPerPage)) setCurrentPage(currentPage + 1);
@@ -58,24 +80,47 @@ const AllProducts = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+            <Helmet>
+                <title>LuxeView | Products</title>
+            </Helmet>
             <div data-aos="fade-up" className="max-w-6xl mx-auto">
                 <h1 className="text-3xl font-bold text-[#1A1A2E] mb-6">All Products</h1>
 
-                {/* Search Bar */}
-                <div className="mb-6 flex items-center border border-gray-300 rounded-lg overflow-hidden">
-                    <input
-                        type="text"
-                        placeholder="Search products..."
-                        value={searchTerm}
-                        onChange={handleSearch}
-                        className="flex-grow px-4 py-2 border-none focus:outline-none"
-                    />
-                    <button
-                        onClick={fetchProducts}
-                        className="bg-[#E94560] text-white rounded-e-md px-4 py-3 hover:bg-[#0F3460] focus:outline-none"
-                    >
-                        <FaSearch />
-                    </button>
+                <div className='flex flex-wrap justify-between items-center md:gap-5'>
+                    {/* Search Bar */}
+                    <div className="flex-grow mb-6 flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                        <input
+                            type="text"
+                            placeholder="Search products..."
+                            value={searchTerm}
+                            onChange={handleSearch}
+                            className="flex-grow px-4 py-2 border-none focus:outline-none"
+                        />
+                        <button
+                            onClick={fetchProducts}
+                            className="bg-[#E94560] text-white rounded-e-md px-4 py-3 hover:bg-[#0F3460] focus:outline-none"
+                        >
+                            <FaSearch />
+                        </button>
+                    </div>
+
+                    {/* Brand Filter */}
+                    <div className="flex-grow mb-6">
+                        <select
+                            value={selectedBrand}
+                            onChange={handleBrandFilter}
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                        >
+                            <option value="">All Brands</option>
+                            {
+                                brands.map((brand, idx) => (
+                                    <option key={idx} value={brand}>
+                                        {brand}
+                                    </option>
+                                ))
+                            }
+                        </select>
+                    </div>
                 </div>
 
                 {/* Price Filter */}

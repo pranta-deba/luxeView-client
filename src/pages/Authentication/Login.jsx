@@ -5,6 +5,8 @@ import { useState } from "react";
 import { ImSpinner11 } from "react-icons/im";
 import axiosPublic from "../../api/axiosPublic";
 import toast from "react-hot-toast";
+import { Helmet } from 'react-helmet-async';
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -55,6 +57,9 @@ const Login = () => {
                 className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg"
             >
                 <div>
+                    <Helmet>
+                        <title>LuxeView | Login</title>
+                    </Helmet>
                     <h2 className="text-center text-3xl font-extrabold text-[#1A1A2E]">
                         Sign in to Your Account
                     </h2>
@@ -67,7 +72,7 @@ const Login = () => {
                         <button
                             onClick={handleGoogleLogin}
                             type="button"
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#E94560] hover:bg-[#0F3460] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1A1A2E] transition duration-300"
+                            className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#E94560] hover:bg-[#0F3460] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1A1A2E] transition duration-300"
                         >
                             <FaGoogle className="mr-2" /> Sign in with Google
                         </button>

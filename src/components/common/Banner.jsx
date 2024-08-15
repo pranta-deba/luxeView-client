@@ -17,7 +17,7 @@ const Banner = () => {
                         alt="Banner 1"
                         className="object-cover h-full w-full"
                     />
-                    <div className="absolute inset-0 flex flex-col  justify-center gap-5 p-5 md:p-12" data-aos="fade-in">
+                    <div className="max-w-[1550px] mx-auto absolute inset-0 flex flex-col  justify-center gap-5 p-5 md:p-12" data-aos="fade-in">
                         <h1 className='text-3xl md:text-6xl font-bold  uppercase gradient-text'>Summer <span className='text-[#E94560]'>Collections</span> </h1>
                         <p className='max-w-2xl'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique cupiditate provident ducimus quia iste? Eveniet cupiditate recusandae nihil rerum, possimus eum est itaque animi ut, provident illo cumque, aspernatur voluptatem!</p>
                         <div>

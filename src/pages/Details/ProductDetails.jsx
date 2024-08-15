@@ -3,6 +3,7 @@ import { FaStar, FaShoppingCart } from "react-icons/fa";
 import AOS from 'aos';
 import { useEffect } from "react";
 import Loader from "../../components/others/Loader";
+import { Helmet } from "react-helmet-async";
 
 const ProductDetails = () => {
     const product = useLoaderData();
@@ -24,13 +25,16 @@ const ProductDetails = () => {
 
     return (
         <>
+            <Helmet>
+                <title>LuxeView | {productName}</title>
+            </Helmet>
             {product && <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div
                     data-aos="fade-up"
                     className="max-w-4xl w-full bg-white shadow-lg rounded-lg overflow-hidden"
                 >
                     <div className="flex flex-col md:flex-row">
-                        <div className="md:w-1/2">
+                        <div className="md:w-1/2 p-6">
                             <img
                                 src={productImage}
                                 alt={productName}

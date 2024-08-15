@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaHome, FaSignInAlt, FaUserPlus, FaInfoCircle, FaTags, FaBoxOpen } from 'react-icons/fa';
+import { FaHome, FaSignInAlt, FaUserPlus, FaInfoCircle, FaBoxOpen, FaOpencart } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import ProfileDropdown from '../common/ProfileDropdown';
 import { TfiMenu } from "react-icons/tfi";
@@ -28,12 +28,16 @@ const Navbar = () => {
                     <NavLink to="/" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         Home
                     </NavLink>
-                    <NavLink to="/categories" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
-                        Categories
-                    </NavLink>
                     <NavLink to="/products" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         Products
                     </NavLink>
+                    {user && <NavLink to="/Cart" className="text-[#0F3460] hover:text-[#E94560] flex items-center relative">
+                        Cart
+                        <span className="absolute top-0 right-0 -mt-3 -mr-3 bg-[#E94560] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                            3
+                        </span>
+                    </NavLink>}
+
                     <NavLink to="/about" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         About Us
                     </NavLink>
@@ -66,12 +70,17 @@ const Navbar = () => {
                     <NavLink to="/" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         <FaHome className="mr-2" /> Home
                     </NavLink>
-                    <NavLink to="/categories" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
-                        <FaTags className="mr-2" /> Categories
-                    </NavLink>
                     <NavLink to="/products" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         <FaBoxOpen className="mr-2" /> Products
                     </NavLink>
+                    {user && <NavLink to="/cart" className="text-[#0F3460] hover:text-[#E94560] flex items-center relative">
+                        <FaOpencart className="mr-2" />
+                        Cart
+                        <span className="absolute top-0 right-0 -mt-3 -mr-0 bg-[#E94560] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                            3
+                        </span>
+                    </NavLink>}
+
                     <NavLink to="/about" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         <FaInfoCircle className="mr-2" /> About Us
                     </NavLink>

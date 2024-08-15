@@ -1,4 +1,5 @@
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { Link} from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -7,7 +8,7 @@ const Footer = () => {
                 {/* Logo Section */}
                 <div className="mb-6 md:mb-0">
                     <a href="/">
-                        <img src="./logo.png" alt="Logo" className="h-12" />
+                        <img src="/logo.png" alt="Logo" className="h-12" />
                     </a>
                 </div>
 
@@ -16,9 +17,9 @@ const Footer = () => {
                     <a href="" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         About Us
                     </a>
-                    <a href="" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
+                    <Link to="/products" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         Shop
-                    </a>
+                    </Link>
                     <a href="" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         Contact
                     </a>
