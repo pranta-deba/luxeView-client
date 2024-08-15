@@ -14,18 +14,18 @@ const Footer = () => {
 
                 {/* Navigation Links */}
                 <div className="flex flex-col md:flex-row items-center">
-                    <a href="" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
+                    <Link to={"/about"} className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         About Us
-                    </a>
+                    </Link>
                     <Link to="/products" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         Shop
                     </Link>
-                    <a href="" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
+                    <button className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         Contact
-                    </a>
-                    <a href="" className="text-sm hover:text-[#E94560] transition-colors duration-300">
+                    </button>
+                    <button className="text-sm hover:text-[#E94560] transition-colors duration-300">
                         Privacy Policy
-                    </a>
+                    </button>
                 </div>
 
                 {/* Social Media Icons */}

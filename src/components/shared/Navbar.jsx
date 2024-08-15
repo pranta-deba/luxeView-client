@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { FaHome, FaSignInAlt, FaUserPlus, FaInfoCircle, FaBoxOpen, FaOpencart } from 'react-icons/fa';
+import { FaHome, FaSignInAlt, FaUserPlus, FaOpencart } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import ProfileDropdown from '../common/ProfileDropdown';
 import { TfiMenu } from "react-icons/tfi";
 import { GrClose } from "react-icons/gr";
 import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
+import { BiSolidUserDetail } from "react-icons/bi";
+import { MdConnectWithoutContact, MdProductionQuantityLimits } from 'react-icons/md';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,6 +45,9 @@ const Navbar = () => {
                     <NavLink to="/about" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         About Us
                     </NavLink>
+                    <NavLink to="/contact" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
+                        Contact Us
+                    </NavLink>
                 </div>
 
                 {/* Buttons */}
@@ -73,7 +78,7 @@ const Navbar = () => {
                         <FaHome className="mr-2" /> Home
                     </NavLink>
                     <NavLink to="/products" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
-                        <FaBoxOpen className="mr-2" /> Products
+                        <MdProductionQuantityLimits className="mr-2" /> Products
                     </NavLink>
                     {user && <NavLink to="/cart" className="text-[#0F3460] hover:text-[#E94560] flex items-center relative">
                         <FaOpencart className="mr-2" />
@@ -84,7 +89,10 @@ const Navbar = () => {
                     </NavLink>}
 
                     <NavLink to="/about" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
-                        <FaInfoCircle className="mr-2" /> About Us
+                        <BiSolidUserDetail className="mr-2" /> About Us
+                    </NavLink>
+                    <NavLink to="/contact" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
+                        <MdConnectWithoutContact className="mr-2" /> Contact Us
                     </NavLink>
                     {!user && <><Link to="/login" className="bg-[#E94560] hover:bg-[#C5374F] text-white py-2 px-4 rounded flex items-center">
                         <FaSignInAlt className="mr-2" /> Login
