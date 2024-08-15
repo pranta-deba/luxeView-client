@@ -3,11 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { ImSpinner11 } from "react-icons/im";
+import axiosPublic from "../../api/axiosPublic";
+import toast from "react-hot-toast";
 
 const Login = () => {
-    const navigation = useNavigate();
+    const navigate = useNavigate();
     const location = useLocation();
-    const { googleLogin } = useAuth()
+    const { googleLogin, loginUser } = useAuth()
     const [loading, setLoading] = useState(false);
     const go = location.state ? location.state : "/";
 
@@ -17,7 +19,24 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log({ email, password });
+        try {
+            const { data } = await axiosPublic.post('/login', { email, password });
+            if (data.email === email) {
+                await loginUser(email, password);
+                toast.success("Login successful.");
+                setLoading(false);
+                navigate(go);
+                return;
+            }
+            toast.error("You not authorized. Please register and try again!");
+            setLoading(false);
+            return;
+
+        } catch (error) {
+            console.log(error.message);
+            toast.error("Invalid username or password!");
+            setLoading(false);
+        }
     }
 
     const handleGoogleLogin = async () => {
@@ -69,6 +88,7 @@ const Login = () => {
                             required
                             className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#1A1A2E] focus:border-[#E94560] focus:z-10 sm:text-sm"
                             placeholder="Password"
+                            minLength={6}
                         />
                     </div>
                     <div className="flex items-center justify-between">
@@ -101,7 +121,7 @@ const Login = () => {
                             disabled={loading}
                             className="w-full flex justify-center items-center gap-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#1A1A2E] hover:bg-[#0F3460] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E94560] transition duration-300"
                         >
-                           {loading && <ImSpinner11 className="animate-spin" />} Sign In
+                            {loading && <ImSpinner11 className="animate-spin" />} Sign In
                         </button>
                     </div>
                 </form>
