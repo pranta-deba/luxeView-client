@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper/modules';
-
+import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <Swiper
@@ -21,9 +21,9 @@ const Banner = () => {
                         <h1 className='text-3xl md:text-6xl font-bold  uppercase gradient-text'>Summer <span className='text-[#E94560]'>Collections</span> </h1>
                         <p className='max-w-2xl'>Dive into our exclusive Summer Collection, featuring the latest trends and styles for the season. Discover vibrant colors, lightweight fabrics, and versatile designs perfect for sunny days and warm nights. </p>
                         <div>
-                            <button className="text-white bg-[#E94560] hover:bg-[#C5374F] px-6 py-2 md:px-10 md:py-2 rounded-full md:text-lg font-semibold">
+                            <Link to={"/products"} className="text-white bg-[#E94560] hover:bg-[#C5374F] px-6 py-2 md:px-10 md:py-2 rounded-full md:text-lg font-semibold">
                                 Explore
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -39,9 +39,9 @@ const Banner = () => {
                         <h1 className='text-3xl md:text-6xl font-bold  uppercase gradient-text'>Casual <span className='text-[#E94560]'>Collections</span> </h1>
                         <p className='max-w-2xl'>Step into effortless style with our Casual Collection. Designed for comfort and versatility, this collection features relaxed silhouettes, soft fabrics, and everyday essentials. Perfect for laid-back weekends and casual outings, our pieces blend simplicity with modern flair, offering timeless looks for any occasion.</p>
                         <div>
-                            <button className="text-white bg-[#E94560] hover:bg-[#C5374F] px-6 py-2 md:px-10 md:py-2 rounded-full md:text-lg font-semibold">
+                            <Link to={"/products"} className="text-white bg-[#E94560] hover:bg-[#C5374F] px-6 py-2 md:px-10 md:py-2 rounded-full md:text-lg font-semibold">
                                 Explore
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

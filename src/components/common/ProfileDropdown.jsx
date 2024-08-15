@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaUser, FaSignOutAlt } from 'react-icons/fa';
 import AOS from 'aos';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProfileDropdown = ({ user, logOut }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -56,18 +56,13 @@ const ProfileDropdown = ({ user, logOut }) => {
                     className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
                     data-aos="fade-down"
                 >
-                    <a
-                        href="/profile"
+                    <Link
+                        to="/profile"
                         className="flex items-center px-4 py-2 hover:bg-gray-100 text-[#1A1A2E]"
                     >
                         <FaUser className="mr-2" /> View Profile
-                    </a>
-                    <a
-                        href="/settings"
-                        className="flex items-center px-4 py-2 hover:bg-gray-100 text-[#1A1A2E]"
-                    >
-                        <FaCog className="mr-2 text-[#1A1A2E]" /> Settings
-                    </a>
+                    </Link>
+                   
                     <button
                         onClick={handleLogout}
                         className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-red-600"

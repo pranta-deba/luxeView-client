@@ -4,13 +4,14 @@ import AOS from 'aos';
 import { Helmet } from 'react-helmet-async';
 import axiosPublic from '../../api/axiosPublic';
 import { Link } from 'react-router-dom';
+import "./AllProducts.css"
 
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
     const [totalProducts, setTotalProducts] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
-    const [priceRange, setPriceRange] = useState([0, 1000]);
+    const [priceRange, setPriceRange] = useState([0, 500]);
     const [sortOption, setSortOption] = useState('price-asc');
     const [productsPerPage] = useState(10);
     const [selectedBrand, setSelectedBrand] = useState('');
@@ -130,18 +131,18 @@ const AllProducts = () => {
                     <input
                         type="range"
                         min="0"
-                        max="10000"
+                        max="500"
                         value={priceRange[0]}
                         onChange={(e) => handleFilter([e.target.value, priceRange[1]])}
-                        className="w-full"
+                        className="range-input w-full"
                     />
                     <input
                         type="range"
                         min="0"
-                        max="10000"
+                        max="500"
                         value={priceRange[1]}
                         onChange={(e) => handleFilter([priceRange[0], e.target.value])}
-                        className="w-full mt-2"
+                        className="range-input w-full mt-2"
                     />
                     <p className="text-gray-600 mt-2">Price: ${priceRange[0]} - ${priceRange[1]}</p>
                 </div>
