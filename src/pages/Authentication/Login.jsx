@@ -1,15 +1,23 @@
 import { FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import { ImSpinner11 } from "react-icons/im";
 
 const Login = () => {
     const navigation = useNavigate();
     const location = useLocation();
     const { googleLogin } = useAuth()
+    const [loading, setLoading] = useState(false);
     const go = location.state ? location.state : "/";
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        console.log({ email, password });
     }
 
     const handleGoogleLogin = async () => {
@@ -81,7 +89,6 @@ const Login = () => {
 
                         <div className="text-sm">
                             <a
-                                href="#"
                                 className="font-medium text-[#E94560] hover:text-[#0F3460] transition duration-300"
                             >
                                 Forgot your password?
@@ -91,9 +98,10 @@ const Login = () => {
                     <div>
                         <button
                             type="submit"
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#1A1A2E] hover:bg-[#0F3460] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E94560] transition duration-300"
+                            disabled={loading}
+                            className="w-full flex justify-center items-center gap-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#1A1A2E] hover:bg-[#0F3460] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E94560] transition duration-300"
                         >
-                            Sign In
+                           {loading && <ImSpinner11 className="animate-spin" />} Sign In
                         </button>
                     </div>
                 </form>

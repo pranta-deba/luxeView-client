@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import AOS from 'aos';
-import 'aos/dist/aos.css';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const ProfileDropdown = () => {
+const ProfileDropdown = ({ user, logOut }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const navigation = useNavigate();
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -25,18 +27,27 @@ const ProfileDropdown = () => {
         };
     }, []);
 
+    const handleLogout = () => {
+        logOut();
+        navigation('/');
+    }
+
     return (
-        <div ref={dropdownRef} className="relative inline-block text-left z-50">
-            {/* Profile Button */}
+        <div ref={dropdownRef} className="relative inline-block text-left z-50 border-2 md:border-4 rounded-full border-[#E94560A4]">
+            {/* Profile Button with Tooltip */}
             <button
                 onClick={toggleDropdown}
-                className="flex items-center space-x-2 focus:outline-none"
+                className="flex items-center space-x-2 focus:outline-none relative group"
             >
                 <img
-                    src="https://via.placeholder.com/40"
+                    src={user?.photoURL ? user?.photoURL : "/user.png"}
                     alt="Profile"
-                    className="w-10 h-10 rounded-full"
+                    className="w-8 md:w-10 h-8 md:h-10 rounded-full"
                 />
+                {/* Tooltip */}
+                <span className="absolute right-12 transform -translate-y-1/2 top-1/2 w-max bg-[#1A1A2E] text-white text-sm font-semibold px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {user?.displayName ? user?.displayName : "Unknown"}
+                </span>
             </button>
 
             {/* Dropdown Menu */}
@@ -57,16 +68,21 @@ const ProfileDropdown = () => {
                     >
                         <FaCog className="mr-2 text-[#1A1A2E]" /> Settings
                     </a>
-                    <a
-                        href="/logout"
+                    <button
+                        onClick={handleLogout}
                         className="flex items-center px-4 py-2 hover:bg-gray-100 text-red-600"
                     >
                         <FaSignOutAlt className="mr-2" /> Logout
-                    </a>
+                    </button>
                 </div>
             )}
         </div>
     );
+};
+
+ProfileDropdown.propTypes = {
+    user: PropTypes.object.isRequired,
+    logOut: PropTypes.func.isRequired,
 };
 
 export default ProfileDropdown;

@@ -4,11 +4,11 @@ import { Link, NavLink } from 'react-router-dom';
 import ProfileDropdown from '../common/ProfileDropdown';
 import { TfiMenu } from "react-icons/tfi";
 import { GrClose } from "react-icons/gr";
-// import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    // const { user } = useAuth();
+    const { user, logOut } = useAuth();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -41,17 +41,18 @@ const Navbar = () => {
 
                 {/* Buttons */}
                 <div className="hidden md:flex space-x-4">
-                    <Link to="/login" className="bg-[#E94560] hover:bg-[#C5374F] text-white py-2 px-4 rounded flex items-center">
+                    {!user && <><Link to="/login" className="bg-[#E94560] hover:bg-[#C5374F] text-white py-2 px-4 rounded flex items-center">
                         <FaSignInAlt className="mr-2" /> Login
                     </Link>
-                    <Link to="/register" className="bg-[#0F3460] hover:bg-[#0C2B4E] text-white py-2 px-4 rounded flex items-center">
-                        <FaUserPlus className="mr-2" /> Register
-                    </Link>
+                        <Link to="/register" className="bg-[#0F3460] hover:bg-[#0C2B4E] text-white py-2 px-4 rounded flex items-center">
+                            <FaUserPlus className="mr-2" /> Register
+                        </Link></>}
+                    {user && <ProfileDropdown user={user} logOut={logOut}/>}
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <div className="md:hidden flex gap-3">
-                    <ProfileDropdown />
+                <div className="md:hidden flex gap-3 items-center justify-center">
+                    {user && <ProfileDropdown user={user} logOut={logOut}/>}
                     <button onClick={toggleMenu} className="text-[#0F3460]">
                         {!isMenuOpen ? <TfiMenu size={30} /> :
                             <GrClose size={30} />}
@@ -74,12 +75,12 @@ const Navbar = () => {
                     <NavLink to="/about" className="text-[#0F3460] hover:text-[#E94560] flex items-center">
                         <FaInfoCircle className="mr-2" /> About Us
                     </NavLink>
-                    <Link to="/login" className="bg-[#E94560] hover:bg-[#C5374F] text-white py-2 px-4 rounded flex items-center">
+                    {!user && <><Link to="/login" className="bg-[#E94560] hover:bg-[#C5374F] text-white py-2 px-4 rounded flex items-center">
                         <FaSignInAlt className="mr-2" /> Login
                     </Link>
-                    <Link to="/register" className="bg-[#0F3460] hover:bg-[#0C2B4E] text-white py-2 px-4 rounded flex items-center">
-                        <FaUserPlus className="mr-2" /> Register
-                    </Link>
+                        <Link to="/register" className="bg-[#0F3460] hover:bg-[#0C2B4E] text-white py-2 px-4 rounded flex items-center">
+                            <FaUserPlus className="mr-2" /> Register
+                        </Link></>}
                 </div>
             )}
         </nav>
