@@ -63,28 +63,22 @@ const FeaturedProducts = () => {
                     ))}
                 </Swiper> :
                     <>
-                        <div className="hidden lg:flex w-full gap-8 my-10">
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                        </div>
-                        <div className="hidden lg:hidden w-full nd:flex gap-8 my-10">
-                            <Skeleton />
-                            <Skeleton />
+                        <div className="hidden md:hidden lg:flex w-full gap-8 my-10">
                             <Skeleton />
                             <Skeleton />
                             <Skeleton />
                             <Skeleton />
                         </div>
-                        <div className=" w-full flex md:hidden lg:hidden gap-8 my-10">
+                        <div className="hidden md:flex lg:hidden w-full  gap-8 my-10">
                             <Skeleton />
                             <Skeleton />
                             <Skeleton />
+                        </div>
+                        <div className="hidden sm:flex md:hidden lg:hidden w-full  gap-8 my-10">
                             <Skeleton />
                             <Skeleton />
+                        </div>
+                        <div className="flex sm:hidden md:hidden lg:hidden w-full  gap-8 my-10">
                             <Skeleton />
                         </div>
                     </>}
