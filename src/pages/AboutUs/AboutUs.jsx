@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
+import { Helmet } from 'react-helmet-async';
 
 const AboutUs = () => {
   useEffect(() => {
@@ -9,6 +10,9 @@ const AboutUs = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen font-sans">
+      <Helmet>
+        <title>LuxeView | About Us</title>
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-[#1A1A2E] text-white py-20">
         <div className="container mx-auto text-center px-6" data-aos="fade-up">

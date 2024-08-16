@@ -1,12 +1,16 @@
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Helmet } from 'react-helmet-async';
 
 const ContactUs = () => {
     AOS.init();
 
     return (
         <div className="">
+            <Helmet>
+                <title>LuxeView | Contact Us</title>
+            </Helmet>
             {/* Banner */}
             <div className="py-20 text-center text-white" style={{ backgroundColor: '#1A1A2E' }}>
                 <h1 className="text-5xl font-bold" data-aos="fade-down">Contact Us</h1>

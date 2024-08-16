@@ -5,6 +5,7 @@ import { useState } from 'react';
 import toast from "react-hot-toast";
 import { ImSpinner11 } from 'react-icons/im';
 import axiosPublic from '../../api/axiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const UserProfile = () => {
     const { user, updateUser } = useAuth();
@@ -45,6 +46,9 @@ const UserProfile = () => {
 
     return (
         <div className="min-h-screen py-4 md:py-20 px-3">
+            <Helmet>
+                <title>LuxeView | {user?.displayName}</title>
+            </Helmet>
             <div data-aos="fade-up" className="max-w-lg mx-auto rounded-lg shadow-lg p-6">
                 <div className="flex flex-col items-center">
                     <img
