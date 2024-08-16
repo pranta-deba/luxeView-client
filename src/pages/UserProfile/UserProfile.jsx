@@ -4,6 +4,7 @@ import { uploadImageToImgBB } from '../../api/imageUpload';
 import { useState } from 'react';
 import toast from "react-hot-toast";
 import { ImSpinner11 } from 'react-icons/im';
+import axiosPublic from '../../api/axiosPublic';
 
 const UserProfile = () => {
     const { user, updateUser } = useAuth();
@@ -14,13 +15,9 @@ const UserProfile = () => {
         e.preventDefault();
         const name = e.target.name.value;
         const photo = e.target.photo.files[0];
-        if (name === user?.displayName) {
-            toast.error("No changes!");
-            setLoader(false);
-            return;
-        }
         if (!photo) {
             await updateUser(name, user?.photoURL);
+            await axiosPublic.patch('/update-user', { email: user?.email, name, photoURL: user?.photoURL });
             toast.success("Profile updated successfully!");
             setLoader(false);
             e.target.reset();
@@ -30,6 +27,7 @@ const UserProfile = () => {
         if (photoURL) {
             try {
                 await updateUser(name, photoURL);
+                await axiosPublic.patch('/update-user', { email: user?.email, name, photoURL });
                 toast.success("Profile updated successfully!");
                 setLoader(false);
                 e.target.reset();
@@ -79,6 +77,7 @@ const UserProfile = () => {
                     </div>
                     <button
                         type="submit"
+                        disabled={loader}
                         className="w-full flex items-center justify-center gap-2 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#E94560] hover:bg-[#E94560A4] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E94560]"
                     >
                         {loader ? <ImSpinner11 className="animate-spin" /> : <FaUserEdit />} Update Profile

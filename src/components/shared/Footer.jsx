@@ -7,9 +7,9 @@ const Footer = () => {
             <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
                 {/* Logo Section */}
                 <div className="mb-6 md:mb-0">
-                    <a href="/">
+                    <Link to="/">
                         <img src="/logo.png" alt="Logo" className="h-12" />
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Navigation Links */}
@@ -20,9 +20,9 @@ const Footer = () => {
                     <Link to="/products" className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         Shop
                     </Link>
-                    <button className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
+                    <Link to={"/contact"} className="mb-2 md:mb-0 md:mr-6 text-sm hover:text-[#E94560] transition-colors duration-300">
                         Contact
-                    </button>
+                    </Link>
                     <button className="text-sm hover:text-[#E94560] transition-colors duration-300">
                         Privacy Policy
                     </button>
@@ -30,13 +30,13 @@ const Footer = () => {
 
                 {/* Social Media Icons */}
                 <div className="flex mt-6 md:mt-0">
-                    <a href="" className="mr-6 hover:text-[#E94560] transition-colors duration-300">
+                    <a  className="mr-6 hover:text-[#E94560] transition-colors duration-300">
                         <FaFacebookF size={20} />
                     </a>
-                    <a href="" className="mr-6 hover:text-[#E94560] transition-colors duration-300">
+                    <a  className="mr-6 hover:text-[#E94560] transition-colors duration-300">
                         <FaTwitter size={20} />
                     </a>
-                    <a href="" className="hover:text-[#E94560] transition-colors duration-300">
+                    <a  className="hover:text-[#E94560] transition-colors duration-300">
                         <FaInstagram size={20} />
                     </a>
                 </div>

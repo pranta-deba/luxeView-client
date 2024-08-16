@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <Private><ProductDetails /></Private>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`)
             },
             { path: "/login", element: <Login /> },
             { path: "/register", element: <Register /> },

@@ -1,5 +1,5 @@
 export const uploadImageToImgBB = async (imageFile) => {
-  const apiKey = "f1d45929a0ede87b282a036c240c1450";
+  const apiKey = import.meta.env.VITE_IBB_API;
   const formData = new FormData();
   formData.append("image", imageFile);
 
